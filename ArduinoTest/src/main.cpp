@@ -1,11 +1,10 @@
 #include <Arduino.h>
-int ledPin = 13;
+int count = 0;
 void setup() {
   // put your setup code here, to run once:
-  pinMode(ledPin, OUTPUT);
+  Serial.begin(9600);
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
-  digitalWrite(ledPin, LOW);
 }
