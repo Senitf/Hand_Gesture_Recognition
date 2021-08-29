@@ -1,0 +1,45 @@
+﻿빌드 시작: 2021-08-25 오후 11:10:47
+     1>2 노드의 "C:\Users\not2p\Desktop\Hand_Gesture_Recognition\HandGesture\NimbleSDK\SDK\CppExamples\DrawSkin\DrawSkin.vcxproj" 프로젝트(build 대상)입니다.
+       프로젝트 파일에 ToolsVersion="16.0"이(가) 들어 있습니다. 이 도구 집합은 알 수 없거나 누락되었을 수 있습니다. 이 경우 적절한 버전의 MSBuild를 설치하여 이 문제를 해결할 수 있습니다. 그렇지 않으면 빌드가 정책상의 이유로 특정 ToolsVersion이 될 수 있습니다. 프로젝트에 ToolsVersion="4.0"이 들어 있는 것으로 간주합니다. 자세한 내용은 http://go.microsoft.com/fwlink/?LinkId=291333을 참조하십시오.
+     1>"C:\Users\not2p\Desktop\Hand_Gesture_Recognition\HandGesture\NimbleSDK\SDK\CppExamples\DrawSkin\DrawSkin.vcxproj"(1) 프로젝트가 2 노드에서 "C:\Users\not2p\Desktop\Hand_Gesture_Recognition\HandGesture\NimbleSDK\SDK\CppExamples\ZERO_CHECK.vcxproj"(2)을(를) 빌드하고 있습니다(GetTargetPath 대상).
+       프로젝트 파일에 ToolsVersion="16.0"이(가) 들어 있습니다. 이 도구 집합은 알 수 없거나 누락되었을 수 있습니다. 이 경우 적절한 버전의 MSBuild를 설치하여 이 문제를 해결할 수 있습니다. 그렇지 않으면 빌드가 정책상의 이유로 특정 ToolsVersion이 될 수 있습니다. 프로젝트에 ToolsVersion="4.0"이 들어 있는 것으로 간주합니다. 자세한 내용은 http://go.microsoft.com/fwlink/?LinkId=291333을 참조하십시오.
+     2>"C:\Users\not2p\Desktop\Hand_Gesture_Recognition\HandGesture\NimbleSDK\SDK\CppExamples\ZERO_CHECK.vcxproj" 프로젝트를 빌드했습니다(GetTargetPath 대상).
+     1>"C:\Users\not2p\Desktop\Hand_Gesture_Recognition\HandGesture\NimbleSDK\SDK\CppExamples\DrawSkin\DrawSkin.vcxproj"(1) 프로젝트가 2 노드에서 "C:\Users\not2p\Desktop\Hand_Gesture_Recognition\HandGesture\NimbleSDK\SDK\CppExamples\HandTrackingClient\HandTrackingClient.vcxproj"(3)을(를) 빌드하고 있습니다(GetTargetPath 대상).
+       프로젝트 파일에 ToolsVersion="16.0"이(가) 들어 있습니다. 이 도구 집합은 알 수 없거나 누락되었을 수 있습니다. 이 경우 적절한 버전의 MSBuild를 설치하여 이 문제를 해결할 수 있습니다. 그렇지 않으면 빌드가 정책상의 이유로 특정 ToolsVersion이 될 수 있습니다. 프로젝트에 ToolsVersion="4.0"이 들어 있는 것으로 간주합니다. 자세한 내용은 http://go.microsoft.com/fwlink/?LinkId=291333을 참조하십시오.
+     3>"C:\Users\not2p\Desktop\Hand_Gesture_Recognition\HandGesture\NimbleSDK\SDK\CppExamples\HandTrackingClient\HandTrackingClient.vcxproj" 프로젝트를 빌드했습니다(GetTargetPath 대상).
+     1>"C:\Users\not2p\Desktop\Hand_Gesture_Recognition\HandGesture\NimbleSDK\SDK\CppExamples\DrawSkin\DrawSkin.vcxproj"(1) 프로젝트가 2 노드에서 "C:\Users\not2p\Desktop\Hand_Gesture_Recognition\HandGesture\NimbleSDK\SDK\CppExamples\ZERO_CHECK.vcxproj"(2:2)을(를) 빌드하고 있습니다(GetNativeManifest 대상).
+       프로젝트 파일에 ToolsVersion="16.0"이(가) 들어 있습니다. 이 도구 집합은 알 수 없거나 누락되었을 수 있습니다. 이 경우 적절한 버전의 MSBuild를 설치하여 이 문제를 해결할 수 있습니다. 그렇지 않으면 빌드가 정책상의 이유로 특정 ToolsVersion이 될 수 있습니다. 프로젝트에 ToolsVersion="4.0"이 들어 있는 것으로 간주합니다. 자세한 내용은 http://go.microsoft.com/fwlink/?LinkId=291333을 참조하십시오.
+     2>"C:\Users\not2p\Desktop\Hand_Gesture_Recognition\HandGesture\NimbleSDK\SDK\CppExamples\ZERO_CHECK.vcxproj" 프로젝트를 빌드했습니다(GetNativeManifest 대상).
+     1>"C:\Users\not2p\Desktop\Hand_Gesture_Recognition\HandGesture\NimbleSDK\SDK\CppExamples\DrawSkin\DrawSkin.vcxproj"(1) 프로젝트가 2 노드에서 "C:\Users\not2p\Desktop\Hand_Gesture_Recognition\HandGesture\NimbleSDK\SDK\CppExamples\HandTrackingClient\HandTrackingClient.vcxproj"(3:2)을(를) 빌드하고 있습니다(GetNativeManifest 대상).
+       프로젝트 파일에 ToolsVersion="16.0"이(가) 들어 있습니다. 이 도구 집합은 알 수 없거나 누락되었을 수 있습니다. 이 경우 적절한 버전의 MSBuild를 설치하여 이 문제를 해결할 수 있습니다. 그렇지 않으면 빌드가 정책상의 이유로 특정 ToolsVersion이 될 수 있습니다. 프로젝트에 ToolsVersion="4.0"이 들어 있는 것으로 간주합니다. 자세한 내용은 http://go.microsoft.com/fwlink/?LinkId=291333을 참조하십시오.
+     3>"C:\Users\not2p\Desktop\Hand_Gesture_Recognition\HandGesture\NimbleSDK\SDK\CppExamples\HandTrackingClient\HandTrackingClient.vcxproj" 프로젝트를 빌드했습니다(GetNativeManifest 대상).
+     1>InitializeBuildStatus:
+         "DrawSkin.dir\Debug\DrawSkin.unsuccessfulbuild"에 연결(touching)하고 있습니다.
+       CustomBuild:
+         모든 출력이 최신 상태입니다.
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\CL.exe /c /I"C:\mingw64\lib\gcc\x86_64-w64-mingw32\8.1.0\include\c++" /I"C:\Users\not2p\Desktop\Hand_Gesture_Recognition\HandGesture\NimbleSDK\SDK\CppExamples\share\glfw-3.0.4\include" /IC:\Users\not2p\Desktop\Hand_Gesture_Recognition\HandGesture\NimbleSDK\SDK\CppExamples /Zi /nologo /W3 /WX- /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D _WIN32_WINNT=0x600 /D WINVER=0x0600 /D WIN32_LEAN_AND_MEAN /D _CRT_SECURE_NO_DEPRECATE /D "CMAKE_INTDIR=\"Debug\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /GR /Fo"DrawSkin.dir\Debug\\" /Fd"DrawSkin.dir\Debug\vc100.pdb" /Gd /TP /errorReport:prompt C:\Users\not2p\Desktop\Hand_Gesture_Recognition\HandGesture\NimbleSDK\SDK\CppExamples\DrawSkin\DrawSkin.cpp
+         DrawSkin.cpp
+     1>C:\mingw64\lib\gcc\x86_64-w64-mingw32\8.1.0\include\c++\cstdlib(39): warning C4068: 알 수 없는 pragma입니다.
+     1>C:\mingw64\lib\gcc\x86_64-w64-mingw32\8.1.0\include\c++\bits/c++config.h(238): error C2146: 구문 오류 : ';'이(가) 'size_t' 식별자 앞에 없습니다.
+     1>C:\mingw64\lib\gcc\x86_64-w64-mingw32\8.1.0\include\c++\bits/c++config.h(238): error C4430: 형식 지정자가 없습니다. int로 가정합니다. 참고: C++에서는 기본 int를 지원하지 않습니다.
+     1>C:\mingw64\lib\gcc\x86_64-w64-mingw32\8.1.0\include\c++\bits/c++config.h(238): warning C4091: '' : 변수를 선언하지 않으면 'unsigned __int64' 왼쪽은 무시됩니다.
+     1>C:\mingw64\lib\gcc\x86_64-w64-mingw32\8.1.0\include\c++\bits/c++config.h(239): error C2146: 구문 오류 : ';'이(가) 'ptrdiff_t' 식별자 앞에 없습니다.
+     1>C:\mingw64\lib\gcc\x86_64-w64-mingw32\8.1.0\include\c++\bits/c++config.h(239): error C4430: 형식 지정자가 없습니다. int로 가정합니다. 참고: C++에서는 기본 int를 지원하지 않습니다.
+     1>C:\mingw64\lib\gcc\x86_64-w64-mingw32\8.1.0\include\c++\bits/c++config.h(239): error C4430: 형식 지정자가 없습니다. int로 가정합니다. 참고: C++에서는 기본 int를 지원하지 않습니다.
+     1>C:\mingw64\lib\gcc\x86_64-w64-mingw32\8.1.0\include\c++\bits/c++config.h(260): warning C4091: 'inline ' : 변수를 선언하지 않으면 'int' 왼쪽은 무시됩니다.
+     1>C:\mingw64\lib\gcc\x86_64-w64-mingw32\8.1.0\include\c++\bits/c++config.h(260): error C2143: 구문 오류 : ';'이(가) 'namespace' 앞에 없습니다.
+     1>C:\mingw64\lib\gcc\x86_64-w64-mingw32\8.1.0\include\c++\bits/c++config.h(260): error C2061: 구문 오류 : 식별자 '__attribute__'
+     1>C:\mingw64\lib\gcc\x86_64-w64-mingw32\8.1.0\include\c++\bits/c++config.h(260): error C2143: 구문 오류 : ';'이(가) '{' 앞에 없습니다.
+     1>C:\mingw64\lib\gcc\x86_64-w64-mingw32\8.1.0\include\c++\bits/c++config.h(260): error C2447: '{' : 함수 헤더가 없습니다. 이전 스타일의 형식 목록입니까?
+     1>C:\mingw64\lib\gcc\x86_64-w64-mingw32\8.1.0\include\c++\bits/c++config.h(264): warning C4091: 'inline ' : 변수를 선언하지 않으면 'int' 왼쪽은 무시됩니다.
+     1>C:\mingw64\lib\gcc\x86_64-w64-mingw32\8.1.0\include\c++\bits/c++config.h(264): error C2143: 구문 오류 : ';'이(가) 'namespace' 앞에 없습니다.
+     1>C:\mingw64\lib\gcc\x86_64-w64-mingw32\8.1.0\include\c++\bits/c++config.h(264): error C2061: 구문 오류 : 식별자 '__attribute__'
+     1>C:\mingw64\lib\gcc\x86_64-w64-mingw32\8.1.0\include\c++\bits/c++config.h(264): error C2143: 구문 오류 : ';'이(가) '{' 앞에 없습니다.
+     1>C:\mingw64\lib\gcc\x86_64-w64-mingw32\8.1.0\include\c++\bits/c++config.h(264): error C2447: '{' : 함수 헤더가 없습니다. 이전 스타일의 형식 목록입니까?
+     1>C:\mingw64\lib\gcc\x86_64-w64-mingw32\8.1.0\include\c++\cstdlib(75): fatal error C1021: 'include_next' 전처리기 명령이 잘못되었습니다.
+     1>"C:\Users\not2p\Desktop\Hand_Gesture_Recognition\HandGesture\NimbleSDK\SDK\CppExamples\DrawSkin\DrawSkin.vcxproj" 프로젝트를 빌드했습니다(build 대상). - 실패
+
+빌드하지 못했습니다.
+
+경과 시간: 00:00:00.11
