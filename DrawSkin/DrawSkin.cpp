@@ -43,10 +43,10 @@ using namespace HandTrackingClient;
 class DrawSkin;
 DrawSkin *m_pDrawSkin;
 HandTrackingClient::Client *m_pClient;
-Vector3f m_r_ft_pos, m_r_th_ft_pos;
-Vector3f m_r_jnt_pos, m_r_th_jnt_pos;
-Vector3f m_r_jnt_rot[3], m_r_th_jnt_rot[3];
-bool m_show_sphere = true;//false;
+Vector3f m_r_ft_pos, m_r_th_ft_pos; //fingertip : 손끝 position
+Vector3f m_r_jnt_pos, m_r_th_jnt_pos; //joint : 마디 posisitons
+Vector3f m_r_jnt_rot[3], m_r_th_jnt_rot[3]; //joint : 마디 root
+bool m_show_sphere = true;//false; //Sphere : 구
 bool m_show_hand = false;
 bool m_show_fingertip = true;//false;
 float m_ft_r = 15.0;
@@ -57,7 +57,6 @@ float m_sphr_r = 70.0;//100.0;
 float m_top_pos = 200.0;
 bool m_prev_coll[2] = {false, false};
 */
-
 
 void drawGroundPlane() 
 {
