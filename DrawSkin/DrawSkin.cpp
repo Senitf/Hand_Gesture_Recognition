@@ -3,6 +3,7 @@
 #include <vector>
 #include <cassert>
 #include <iostream>
+#include <cmath>
 
 // Windows.h must be included before GLU:
 #if defined(_WIN32)
@@ -16,6 +17,9 @@
 #endif
 
 #include <GL/glfw3.h>
+
+//For Keyboard event
+#include <gl/glut.h>
 
 #include "../HandTrackingClient/HandTrackingListener.h"
 #include "../HandTrackingClient/HandTrackingClient.h"
@@ -32,8 +36,17 @@ using namespace HandTrackingClient;
 #include <glm/glm.hpp>
 #include <process.h>
 
-/*
+//#define N_HANDS 1
+Vector3f m_r_th_ft_pos, m_r_th_jnt_pos; //thumb
+Vector3f m_r_id_ft_pos, m_r_id_jnt_pos; //index
+Vector3f m_r_ro_ft_pos, m_r_ro_jnt_pos;//root
+Vector3f m_r_id_jnt_rot[3], m_r_th_jnt_rot[3], m_r_ro_jnt_rot[3];
+Vector3f m_r_id_jnt_cache, m_r_id_jnt_call;
 
+Vector3f m_r_id_5_jnt_pos, m_r_id_6_jnt_pos, m_r_id_7_jnt_pos;
+
+float tmpAngle;
+/*
 void display(GLFWwindow *pWindow, int viewportWidth, int viewportHeight);
 unsigned __stdcall hapticRenderingThread(void* arg);
 
@@ -43,10 +56,10 @@ using namespace HandTrackingClient;
 class DrawSkin;
 DrawSkin *m_pDrawSkin;
 HandTrackingClient::Client *m_pClient;
-Vector3f m_r_ft_pos, m_r_th_ft_pos; //fingertip : 손끝 position
-Vector3f m_r_jnt_pos, m_r_th_jnt_pos; //joint : 마디 posisitons
-Vector3f m_r_jnt_rot[3], m_r_th_jnt_rot[3]; //joint : 마디 root
-bool m_show_sphere = true;//false; //Sphere : 구
+Vector3f m_r_ft_pos, m_r_th_ft_pos;
+Vector3f m_r_jnt_pos, m_r_th_jnt_pos;
+Vector3f m_r_jnt_rot[3], m_r_th_jnt_rot[3];
+bool m_show_sphere = true;//false;
 bool m_show_hand = false;
 bool m_show_fingertip = true;//false;
 float m_ft_r = 15.0;
@@ -57,6 +70,9 @@ float m_sphr_r = 70.0;//100.0;
 float m_top_pos = 200.0;
 bool m_prev_coll[2] = {false, false};
 */
+float prevPositions[3];
+float prevNormals[3];
+float prevTriangles[3];
 
 void drawGroundPlane() 
 {
@@ -139,7 +155,7 @@ DrawSkin::handleEvent(const HandTrackingMessage& message)
     {
         const UserMessage& userMessage = dynamic_cast<const UserMessage&> (message);
         SimpleLock lock (_dataMutex);
-        for (int iHand = 0; iHand < N_HANDS; ++iHand)
+        for (int iHand = 1; iHand < N_HANDS; ++iHand)
         {
             _restPositions[iHand] = userMessage.getRestPositions(iHand);
             _triangles[iHand] = userMessage.getTriangles(iHand);
@@ -151,7 +167,7 @@ DrawSkin::handleEvent(const HandTrackingMessage& message)
             assert (_skinningWeights[iHand].size() == _restPositions[iHand].size());
         }
 
-        for (int iHand = 0; iHand < N_HANDS; ++iHand)
+        for (int iHand = 1; iHand < N_HANDS; ++iHand)
             _skinnedPositions[iHand] = _restPositions[iHand];
         updateVertexNormals();
         //Refresh(false);
@@ -161,7 +177,7 @@ DrawSkin::handleEvent(const HandTrackingMessage& message)
         const PoseMessage& poseMessage = dynamic_cast<const PoseMessage&>(message);
 
         SimpleLock lock (_dataMutex);
-        for (int iHand = 0; iHand < N_HANDS; ++iHand)
+        for (int iHand = 1; iHand < N_HANDS; ++iHand)
         {
             const std::array<Transformf, N_JOINTS>& restJoints = _restJointTransforms[iHand];
             std::array<Transformf, N_JOINTS> jointTransforms = poseMessage.getJointTransforms(iHand);
@@ -184,26 +200,24 @@ DrawSkin::handleEvent(const HandTrackingMessage& message)
                     p += boneWeights[kBone] * (relativeJointTransforms[boneIndices[kBone]] * restPos[jVertex]);
                 skinnedPos[jVertex] = p;
             }
-        }
-
-		/*
-		edit something
-		//  LEFT_HAND = 0, RIGHT_HAND = 1
+			//  LEFT_HAND = 0, RIGHT_HAND = 1
 			//  THUMB = 0, INDEX FINGER = 1, MIDDLE FINGER = 2, RING FINGER = 3, PINKY FINGER = 4
-			const std::array< Vector3f, N_FINGERS >& fingerTips = poseMessage.getFingerTips(iHand);
+			const std::array< Vector3f, N_FINGERS >& fingerTips = poseMessage.getFingerTips(1);
 			Vector3f qv; float qw;
-			/// thumb
+			//root
+
+			//thumb
 			m_r_th_jnt_pos = jointTransforms[4].translation;
 			qv = jointTransforms[4].rotation.v;
 			qw = jointTransforms[4].rotation.w;
 			m_r_th_jnt_rot[0].x = 1-2*qv.y*qv.y-2*qv.z*qv.z; 
 			m_r_th_jnt_rot[0].y = 2*qv.x*qv.y+2*qv.z*qw;
 			m_r_th_jnt_rot[0].z = 2*qv.x*qv.z-2*qv.y*qw;
-			///
+			//
 			m_r_th_jnt_rot[1].x  = 2*qv.x*qv.y-2*qv.z*qw;
 			m_r_th_jnt_rot[1].y = 1-2*qv.x*qv.x - 2*qv.z*qv.z;
 			m_r_th_jnt_rot[1].z = 2*qv.y*qv.z + 2*qv.x*qw;
-			///
+			//
 			m_r_th_jnt_rot[2].x = 2*qv.x*qv.z + 2*qv.y*qw;
 			m_r_th_jnt_rot[2].y = 2*qv.y*qv.z - 2*qv.x*qw;
 			m_r_th_jnt_rot[2].z = 1- 2*qv.x*qv.x - 2*qv.y*qv.y;
@@ -211,34 +225,88 @@ DrawSkin::handleEvent(const HandTrackingMessage& message)
 			m_r_th_ft_pos.y = fingerTips[0].y;
 			m_r_th_ft_pos.z = fingerTips[0].z;
 			// index
-			m_r_jnt_pos = jointTransforms[7].translation;
-		//		m_r_jnt_rot = jointTransforms[7].rotation.v;
+			m_r_id_jnt_pos = jointTransforms[7].translation;
+			//m_r_jnt_rot = jointTransforms[7].rotation.v;
 			qv = jointTransforms[7].rotation.v;
 			qw = jointTransforms[7].rotation.w;
-			m_r_jnt_rot[0].x = 1-2*qv.y*qv.y-2*qv.z*qv.z; 
-			m_r_jnt_rot[0].y = 2*qv.x*qv.y+2*qv.z*qw;
-			m_r_jnt_rot[0].z = 2*qv.x*qv.z-2*qv.y*qw;
-			///
-			m_r_jnt_rot[1].x  = 2*qv.x*qv.y-2*qv.z*qw;
-			m_r_jnt_rot[1].y = 1-2*qv.x*qv.x - 2*qv.z*qv.z;
-			m_r_jnt_rot[1].z = 2*qv.y*qv.z + 2*qv.x*qw;
-			///
-			m_r_jnt_rot[2].x = 2*qv.x*qv.z + 2*qv.y*qw;
-			m_r_jnt_rot[2].y = 2*qv.y*qv.z - 2*qv.x*qw;
-			m_r_jnt_rot[2].z = 1- 2*qv.x*qv.x - 2*qv.y*qv.y;
-			m_r_ft_pos.x = fingerTips[1].x;
-			m_r_ft_pos.y = fingerTips[1].y;
-			m_r_ft_pos.z = fingerTips[1].z;
-		//	for (int iFinger = 0; iFinger < N_FINGERS; ++iFinger)
-		//	{
-		////		std::cout << " Hand #:" << iHand << " fingerTip #:" << iFinger << "(" <<
-  //       //       fingerTips[iFinger].x << ", " << fingerTips[iFinger].y << ", " << fingerTips[iFinger].z << ")" << std::endl;
-		//	}
+			m_r_id_jnt_rot[0].x = 1-2*qv.y*qv.y-2*qv.z*qv.z; 
+			m_r_id_jnt_rot[0].y = 2*qv.x*qv.y+2*qv.z*qw;
+			m_r_id_jnt_rot[0].z = 2*qv.x*qv.z-2*qv.y*qw;
+			//
+			m_r_id_jnt_rot[1].x  = 2*qv.x*qv.y-2*qv.z*qw;
+			m_r_id_jnt_rot[1].y = 1-2*qv.x*qv.x - 2*qv.z*qv.z;
+			m_r_id_jnt_rot[1].z = 2*qv.y*qv.z + 2*qv.x*qw;
+			//
+			m_r_id_jnt_rot[2].x = 2*qv.x*qv.z + 2*qv.y*qw;
+			m_r_id_jnt_rot[2].y = 2*qv.y*qv.z - 2*qv.x*qw;
+			m_r_id_jnt_rot[2].z = 1- 2*qv.x*qv.x - 2*qv.y*qv.y;
+			m_r_id_ft_pos.x = fingerTips[1].x;
+			m_r_id_ft_pos.y = fingerTips[1].y;
+			m_r_id_ft_pos.z = fingerTips[1].z;
+
+			tmpAngle = acos((m_r_id_jnt_rot[0].x + m_r_id_jnt_rot[1].y + m_r_id_jnt_rot[2].z - 1) / 2);
+
+			//root
+			m_r_ro_jnt_pos = jointTransforms[0].translation;
+			//m_r_jnt_rot = jointTransforms[7].rotation.v;
+			qv = jointTransforms[0].rotation.v;
+			qw = jointTransforms[0].rotation.w;
+			m_r_ro_jnt_rot[0].x = 1-2*qv.y*qv.y-2*qv.z*qv.z; 
+			m_r_ro_jnt_rot[0].y = 2*qv.x*qv.y+2*qv.z*qw;
+			m_r_ro_jnt_rot[0].z = 2*qv.x*qv.z-2*qv.y*qw;
+			//
+			m_r_ro_jnt_rot[1].x  = 2*qv.x*qv.y-2*qv.z*qw;
+			m_r_ro_jnt_rot[1].y = 1-2*qv.x*qv.x - 2*qv.z*qv.z;
+			m_r_ro_jnt_rot[1].z = 2*qv.y*qv.z + 2*qv.x*qw;
+			//
+			m_r_ro_jnt_rot[2].x = 2*qv.x*qv.z + 2*qv.y*qw;
+			m_r_ro_jnt_rot[2].y = 2*qv.y*qv.z - 2*qv.x*qw;
+			m_r_ro_jnt_rot[2].z = 1- 2*qv.x*qv.x - 2*qv.y*qv.y;
+
+			//Test 1
+			/*
+			std::cout << " Hand #:" << 1 << " fingerTip #:" << 0 << "(" <<
+			m_r_ro_jnt_pos.x << ", " << m_r_ro_jnt_pos.y << ", " << m_r_ro_jnt_pos.z << ")" << std::endl;
+			std::cout << " Hand #:" << 1 << " fingerTip #:" << 1 << "(" <<
+			m_r_id_jnt_pos.x << ", " << m_r_id_jnt_pos.y << ", " << m_r_id_jnt_pos.z << ")" << std::endl;
+
+			m_r_id_jnt_cache = m_r_id_jnt_pos;
+			if(m_r_id_jnt_pos.x < m_r_id_jnt_call.x - 60.){
+				printf("Left\n");
+			}
+			else if(m_r_id_jnt_pos.x > m_r_id_jnt_call.x + 60.){
+				printf("Right\n");
+			}
+			*/
+
+			//Test2
+			m_r_id_5_jnt_pos = jointTransforms[5].translation;
+			m_r_id_6_jnt_pos = jointTransforms[6].translation;
+			m_r_id_7_jnt_pos = jointTransforms[7].translation;
+
+			/*
+			std::cout << " Hand #:" << 1 << " id jnt #:" << 5 << "(" <<
+			m_r_id_5_jnt_pos.x << ", " << m_r_id_5_jnt_pos.y << ", " << m_r_id_5_jnt_pos.z << ")" << std::endl;
+
+			std::cout << " Hand #:" << 1 << " id jnt #:" << 6 << "(" <<
+			m_r_id_6_jnt_pos.x << ", " << m_r_id_6_jnt_pos.y << ", " << m_r_id_6_jnt_pos.z << ")" << std::endl;
+
+			std::cout << " Hand #:" << 1 << " id jnt #:" << 7 << "(" <<
+			m_r_id_7_jnt_pos.x << ", " << m_r_id_7_jnt_pos.y << ", " << m_r_id_7_jnt_pos.z << ")" << std::endl;
+			*/
+
+			std::cout << " Hand #:" << 1 << " id jnt #:" << 7 << "(" <<
+			tmpAngle << ")" << std::endl;
+
+			/*
+			for (int iFinger = 0; iFinger < N_FINGERS; ++iFinger)
+			{
+			std::cout << " Hand #:" << iHand << " fingerTip #:" << iFinger << "(" <<
+			fingerTips[iFinger].x << ", " << fingerTips[iFinger].y << ", " << fingerTips[iFinger].z << ")" << std::endl;
+			}
+			*/
 
         }
-		*/
-
-
         updateVertexNormals();
         //Refresh(false);
     }
@@ -252,7 +320,7 @@ DrawSkin::renderSkin()
 	edit something
 	int iHand = 1;
 	*/
-    for (int iHand = 0; iHand < N_HANDS; ++iHand)
+    for (int iHand = 1; iHand < N_HANDS; ++iHand)
     {
         const std::vector<Vector3f>& positions = _skinnedPositions[iHand];
         const std::vector<Vector3f>& normals = _skinnedVertexNormals[iHand];
@@ -260,6 +328,12 @@ DrawSkin::renderSkin()
 
         if (positions.empty() || normals.empty() || triangles.empty())
             continue;
+		/*
+		for(int i = 0; i < 3; i++){
+			prevPositions[i] = positions[i].x;
+			printf("%lf\n", prevPositions[i]);
+		}
+		*/
 
         glEnableClientState(GL_VERTEX_ARRAY);
         glVertexPointer(3, GL_FLOAT, 0, &positions[0]);
@@ -280,7 +354,7 @@ DrawSkin::renderSkin()
 void
 DrawSkin::updateVertexNormals()
 {
-    for (int iHand = 0; iHand < N_HANDS; ++iHand)
+    for (int iHand = 1; iHand < N_HANDS; ++iHand)
     {
         const std::vector<Vector3f>& positions = _skinnedPositions[iHand];
         std::vector<Vector3f>& normals = _skinnedVertexNormals[iHand];
@@ -413,13 +487,17 @@ void DrawSkin::paint(int viewportWidth, int viewportHeight)
     }
 }
 
-/*
+
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
     if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
         exit(0);//printf("KangGeon Kim\n");//activate_airship();
+	else if(key == GLFW_KEY_C){
+		//printf("C pressed\n");
+		m_r_id_jnt_call = m_r_id_jnt_cache;
+	}
 }
-
+/*
 void display(GLFWwindow *pWindow, int viewportWidth, int viewportHeight)
 {
 	const float material[4] = {1.0f, 0.0f, 0.0f, 0.0f};
@@ -597,6 +675,8 @@ int main(void)
     if (window == NULL)
         return EXIT_FAILURE;
 
+	glfwSetKeyCallback(window, key_callback);
+
 	/*
 	se
 	glfwSetKeyCallback(pWindow, key_callback);
@@ -615,7 +695,6 @@ int main(void)
     {
         int viewportWidth, viewportHeight;
         glfwGetWindowSize(window, &viewportWidth, &viewportHeight);
-
 
 		/*se replaced
 		glfwMakeContextCurrent(pWindow);

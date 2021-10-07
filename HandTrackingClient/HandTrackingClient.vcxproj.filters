@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\not2p\Desktop\Hand_Gesture_Recognition\HandGesture\NimbleSDK\SDK\CppExamples\HandTrackingClient\HandTrackingClient.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\not2p\Desktop\Hand_Gesture_Recognition\HandGesture\NimbleSDK\SDK\CppExamples\HandTrackingClient\HandTrackingMessage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\not2p\Desktop\Hand_Gesture_Recognition\HandGesture\NimbleSDK\SDK\CppExamples\HandTrackingClient\Threads.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\not2p\Desktop\Hand_Gesture_Recognition\HandGesture\NimbleSDK\SDK\CppExamples\HandTrackingClient\VecMath.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\not2p\Desktop\Hand_Gesture_Recognition\HandGesture\NimbleSDK\SDK\CppExamples\HandTrackingClient\OpenCVCamera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\not2p\Desktop\Hand_Gesture_Recognition\HandGesture\NimbleSDK\SDK\CppExamples\HandTrackingClient\HandTrackingClient.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\not2p\Desktop\Hand_Gesture_Recognition\HandGesture\NimbleSDK\SDK\CppExamples\HandTrackingClient\HandTrackingMessage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\not2p\Desktop\Hand_Gesture_Recognition\HandGesture\NimbleSDK\SDK\CppExamples\HandTrackingClient\HandTrackingListener.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\not2p\Desktop\Hand_Gesture_Recognition\HandGesture\NimbleSDK\SDK\CppExamples\HandTrackingClient\Threads.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\not2p\Desktop\Hand_Gesture_Recognition\HandGesture\NimbleSDK\SDK\CppExamples\HandTrackingClient\VecMath.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\not2p\Desktop\Hand_Gesture_Recognition\HandGesture\NimbleSDK\SDK\CppExamples\HandTrackingClient\OpenCVCamera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\not2p\Desktop\Hand_Gesture_Recognition\HandGesture\NimbleSDK\SDK\CppExamples\HandTrackingClient\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{B194F834-B7D0-3CAC-8BC4-83A5FA2AF319}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{5EAE2A21-792F-3FF2-A0D8-D2AE6E318BDC}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
