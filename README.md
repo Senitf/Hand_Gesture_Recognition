@@ -1,6 +1,6 @@
 # Hand_Gesture_Recognition
 
-## Key Words: 
+## Key Words
 
 `로보틱스(Robotics)`, `텔레오퍼레이션(Teleoperation)`, `가상현실(Virtual reality)`
 
