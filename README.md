@@ -1,4 +1,4 @@
-# Hand_Gesture_Recognition
+# Hand gesture-based control method for teleoperated robot and avatar motion
 
 ## Key Words
 
