@@ -1,0 +1,28 @@
+﻿Build started 2021-08-26 오전 12:01:34.
+     1>Project "C:\Users\not2p\Desktop\Hand_Gesture_Recognition\HandGesture\NimbleSDK\SDK\CppExamples\vs2010\HandTrackingClient.vcxproj" on node 2 (build target(s)).
+       Project file contains ToolsVersion="14.0". This toolset may be unknown or missing, in which case you may be able to resolve this by installing the appropriate version of MSBuild, or the build may have been forced to a particular ToolsVersion for policy reasons. Treating the project as if it had ToolsVersion="4.0". For more information, please see http://go.microsoft.com/fwlink/?LinkId=291333.
+     1>InitializeBuildStatus:
+         Touching "obj\x64\Debug\HandTrackingClient\HandTrackingClient.unsuccessfulbuild".
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\CL.exe /c /I.. /I"..\share\glfw-3.0.4\include" /Zi /nologo /W3 /WX- /Od /D _WIN32_WINNT=0x600 /D WINVER=0x0600 /D WIN32_LEAN_AND_MEAN /D WIN32 /D _WINDOWS /D UNICODE /D _UNICODE /D NOPCH /D _CRT_SECURE_NO_DEPRECATE /D _CRT_SECURE_NO_WARNINGS /D DEBUG /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"obj\x64\Debug\HandTrackingClient\\" /Fd"bin\debug\HandTrackingClient.pdb" /Gd /TP /errorReport:prompt ..\HandTrackingClient\HandTrackingClient.cpp ..\HandTrackingClient\HandTrackingMessage.cpp ..\HandTrackingClient\OpenCVCamera.cpp ..\HandTrackingClient\Threads.cpp ..\HandTrackingClient\VecMath.cpp
+         VecMath.cpp
+         Threads.cpp
+         OpenCVCamera.cpp
+         HandTrackingMessage.cpp
+         HandTrackingClient.cpp
+         Generating Code...
+       Lib:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\Lib.exe /OUT:"bin\debug\HandTrackingClient.lib" /NOLOGO obj\x64\Debug\HandTrackingClient\HandTrackingClient.obj
+         obj\x64\Debug\HandTrackingClient\HandTrackingMessage.obj
+         obj\x64\Debug\HandTrackingClient\OpenCVCamera.obj
+         obj\x64\Debug\HandTrackingClient\Threads.obj
+         obj\x64\Debug\HandTrackingClient\VecMath.obj
+         HandTrackingClient.vcxproj -> C:\Users\not2p\Desktop\Hand_Gesture_Recognition\HandGesture\NimbleSDK\SDK\CppExamples\vs2010\bin\debug\HandTrackingClient.lib
+       FinalizeBuildStatus:
+         Deleting file "obj\x64\Debug\HandTrackingClient\HandTrackingClient.unsuccessfulbuild".
+         Touching "obj\x64\Debug\HandTrackingClient\HandTrackingClient.lastbuildstate".
+     1>Done Building Project "C:\Users\not2p\Desktop\Hand_Gesture_Recognition\HandGesture\NimbleSDK\SDK\CppExamples\vs2010\HandTrackingClient.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:01.72
